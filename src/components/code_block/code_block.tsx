@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 import styles from "./code_block.module.scss";
 import Text from "../text/text";
+import capitalise from "@/utils/capitalise";
 
 interface CodeBlockProps {
-  code: string;
+  codeMap: Record<string, string>;
   highlight?: number | number[];
-  language: string;
+  defaultLanguage?: string;
   lineNumbers?: boolean;
   variables?: [string, number | undefined][];
 }
@@ -31,12 +32,17 @@ function getLineHighlight(
 }
 
 export default function CodeBlock({
-  code,
+  codeMap,
   highlight,
-  language,
+  defaultLanguage = "javascript",
   lineNumbers,
   variables,
 }: CodeBlockProps) {
+  const availableLanguages = Object.keys(codeMap);
+
+  const [language, setLanguage] = useState(defaultLanguage);
+  const [code, setCode] = useState(codeMap[defaultLanguage]);
+
   const highlightLines = Array.isArray(highlight)
     ? [...highlight]
     : [highlight];
@@ -44,9 +50,19 @@ export default function CodeBlock({
   return (
     <div className={styles["code-block"]}>
       <div className={styles["code-block--header"]}>
-        <Text size={18} semiBold>
-          Javascript
-        </Text>
+        <select
+          value={language}
+          onChange={(e) => {
+            setLanguage(e.target.value);
+            setCode(codeMap[e.target.value]);
+          }}
+        >
+          {availableLanguages.map((lang) => (
+            <option key={lang} value={lang}>
+              {capitalise(lang)}
+            </option>
+          ))}
+        </select>
         <button onClick={() => navigator.clipboard.writeText(code)}>
           Copy
         </button>

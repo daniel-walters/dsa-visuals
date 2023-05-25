@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { BubbleSortArray } from "@/algorithms/bubble_sort";
+import { BubbleSortArray } from "@/algorithms/bubble_sort/bubble_sort";
 
 import ArrayItem from "../array_item/array_item";
 

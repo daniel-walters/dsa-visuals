@@ -1,6 +1,4 @@
-import { BubbleSortIteration } from "@/algorithms/bubble_sort";
-
-const DEFAULT_SPEED = 1000;
+import { BubbleSortIteration } from "@/algorithms/bubble_sort/bubble_sort";
 
 export type ArrayActions =
   | {

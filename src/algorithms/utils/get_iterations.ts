@@ -2,7 +2,7 @@ import {
   BubbleSortArray,
   BubbleSortFn,
   BubbleSortIteration,
-} from "../bubble_sort";
+} from "../bubble_sort/bubble_sort";
 
 type GetIterationsFn = (
   generatorFn: BubbleSortFn,

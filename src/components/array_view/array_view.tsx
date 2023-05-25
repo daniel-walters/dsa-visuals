@@ -2,7 +2,8 @@
 
 import React, { useEffect, useReducer } from "react";
 
-import bubbleSort from "@/algorithms/bubble_sort";
+import bubbleSort from "@/algorithms/bubble_sort/bubble_sort";
+import codeMap from "@/algorithms/bubble_sort/code";
 import getIterations from "@/algorithms/utils/get_iterations";
 import getRandomArray from "@/utils/get_random_array";
 import transformArray from "@/utils/transform_array";
@@ -74,9 +75,9 @@ export default function ArrayView() {
             {commentary}
           </Text>
           <CodeBlock
+            codeMap={codeMap}
             code={code}
             highlight={lineNums}
-            language="javascript"
             lineNumbers
             variables={[
               ["i", outerLoop],
