@@ -1,0 +1,13 @@
+.array-item {
+  border: 1px solid gray;
+  display: flex;
+  width: 64px;
+  min-height: 1em;
+
+  span {
+    width: 100%;
+    align-self: flex-end;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+}

@@ -1,0 +1,10 @@
+.array-view {
+  width: 80vw;
+  margin: 0 auto;
+
+  &--control {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+}

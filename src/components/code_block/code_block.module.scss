@@ -1,0 +1,22 @@
+.code-block {
+  margin-top: 16px;
+  position: relative;
+  width: fit-content;
+
+  span {
+    font-size: 18px;
+  }
+
+  &--vars {
+    p {
+      margin-bottom: 4px;
+    }
+  }
+
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    background-color: aqua;
+    padding: 12px;
+  }
+}
