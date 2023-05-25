@@ -5,6 +5,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import styles from "./code_block.module.scss";
 import Text from "../text/text";
 import capitalise from "@/utils/capitalise";
+import CopyIcon from "../../../public/copy.svg";
 
 interface CodeBlockProps {
   codeMap: Record<string, string>;
@@ -64,7 +65,7 @@ export default function CodeBlock({
           ))}
         </select>
         <button onClick={() => navigator.clipboard.writeText(code)}>
-          Copy
+          <CopyIcon />
         </button>
       </div>
       <SyntaxHighlighter

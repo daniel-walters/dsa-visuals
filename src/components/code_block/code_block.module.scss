@@ -18,5 +18,24 @@
     justify-content: space-between;
     background-color: aqua;
     padding: 12px;
+
+    button {
+      background: none;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+
+        svg {
+          fill: white;
+        }
+      }
+    }
+
+    svg {
+      height: 24px;
+      width: 24px;
+      transition: 0.1s;
+    }
   }
 }
