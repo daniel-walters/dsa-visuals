@@ -19,18 +19,6 @@ import Text from "../text/text";
 
 const DEFAULT_ARRAY_SIZE = 7;
 
-const code = `function bubbleSort(array) {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array.length - 1 - i; j++) {
-      if (array[j + 1] < array[j]) {
-        const temp = array[j + 1];
-        array[j + 1] = array[j];
-        array[j] = temp;
-      }
-    }
-  }
-}`;
-
 export default function ArrayView() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -76,7 +64,6 @@ export default function ArrayView() {
           </Text>
           <CodeBlock
             codeMap={codeMap}
-            code={code}
             highlight={lineNums}
             lineNumbers
             variables={[
