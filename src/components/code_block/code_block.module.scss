@@ -13,6 +13,33 @@
     }
   }
 
+  &__loading {
+    pre {
+      code {
+        visibility: hidden;
+      }
+    }
+
+    .code-block--header {
+      background-color: lightblue;
+      background: linear-gradient(
+        to right,
+        blue 0%,
+        blue 10%,
+        lightblue 10%,
+        lightblue 100%
+      );
+      background-size: 200% 200%;
+      animation-name: loading;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      select,
+      svg {
+        visibility: hidden;
+      }
+    }
+  }
+
   &--header {
     display: flex;
     justify-content: space-between;
@@ -37,5 +64,14 @@
       width: 24px;
       transition: 0.1s;
     }
+  }
+}
+
+@keyframes loading {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: -100% 100%;
   }
 }

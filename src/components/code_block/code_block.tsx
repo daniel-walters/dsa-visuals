@@ -6,6 +6,7 @@ import styles from "./code_block.module.scss";
 import Text from "../text/text";
 import capitalise from "@/utils/capitalise";
 import CopyIcon from "../../../public/copy.svg";
+import classNames from "classnames";
 
 interface CodeBlockProps {
   codeMap: Record<string, string>;
@@ -13,23 +14,23 @@ interface CodeBlockProps {
   defaultLanguage?: string;
   lineNumbers?: boolean;
   variables?: [string, number | undefined][];
+  loading?: boolean;
 }
 
 function getLineHighlight(
   lineNumber: number,
   linesToHighlight: (number | undefined)[]
 ): React.HTMLProps<HTMLElement> {
+  const style: React.HTMLProps<HTMLElement>["style"] = {
+    width: "100%",
+    display: "block",
+  };
+
   if (linesToHighlight.includes(lineNumber)) {
-    return {
-      style: {
-        backgroundColor: "rgba(0, 200, 83, 0.5)",
-        width: "100%",
-        display: "block",
-      },
-    };
+    style.backgroundColor = "rgba(0, 200, 83, 0.5)";
   }
 
-  return {};
+  return { style };
 }
 
 export default function CodeBlock({
@@ -37,6 +38,7 @@ export default function CodeBlock({
   highlight,
   defaultLanguage = "javascript",
   lineNumbers,
+  loading,
   variables,
 }: CodeBlockProps) {
   const availableLanguages = Object.keys(codeMap);
@@ -49,7 +51,12 @@ export default function CodeBlock({
     : [highlight];
 
   return (
-    <div className={styles["code-block"]}>
+    <div
+      className={classNames(
+        styles["code-block"],
+        loading && styles["code-block__loading"]
+      )}
+    >
       <div className={styles["code-block--header"]}>
         <select
           value={language}

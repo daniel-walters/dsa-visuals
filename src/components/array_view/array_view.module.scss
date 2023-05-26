@@ -7,4 +7,33 @@
     justify-content: center;
     margin-bottom: 8px;
   }
+
+  &--commentary {
+    &__loading {
+      height: 1em;
+      width: 100%;
+      background-color: gray;
+      border-radius: 1em;
+      background: linear-gradient(
+        to right,
+        lightgray 0%,
+        lightgray 10%,
+        gray 10%,
+        gray 100%
+      );
+      background-size: 200% 200%;
+      animation-name: loading;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@keyframes loading {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: -100% 100%;
+  }
 }

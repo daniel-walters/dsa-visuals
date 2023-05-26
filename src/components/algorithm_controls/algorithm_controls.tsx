@@ -26,12 +26,11 @@ export default function AlgorithmControls() {
 
   const intervalRef = useRef<NodeJS.Timer>();
 
-  if (!state || !dispatch) return null;
-
-  const { index, iterations } = state;
+  const { index, iterations } = state || { index: 0, iterations: [] };
 
   const atStart = index === 0;
   const atEnd = !!iterations && index === iterations.length - 1;
+  const loading = !iterations?.length;
 
   const handleNext = () => dispatch?.({ type: "INCREMENT" });
   const handlePrev = () => dispatch?.({ type: "DECREMENT" });
@@ -41,13 +40,13 @@ export default function AlgorithmControls() {
   const startPlay = () => {
     setPlayMode(true);
 
-    let index = state.index;
-    let length = state.iterations?.length;
+    let curIndex = index;
+    let curLength = iterations?.length;
 
     const interval = setInterval(() => {
-      index++;
+      curIndex++;
 
-      if (length && index < length) {
+      if (curLength && curIndex < curLength) {
         dispatch?.({ type: "INCREMENT" });
       } else {
         endPlay();
@@ -64,19 +63,22 @@ export default function AlgorithmControls() {
 
   return (
     <div className={styles["algorithm-controls"]}>
-      <button onClick={handleReset} disabled={atStart || playMode}>
+      <button onClick={handleReset} disabled={atStart || playMode || loading}>
         <Reset />
       </button>
-      <button onClick={handlePrev} disabled={atStart || playMode}>
+      <button onClick={handlePrev} disabled={atStart || playMode || loading}>
         <Prev />
       </button>
-      <button onClick={playMode ? endPlay : startPlay} disabled={atEnd}>
+      <button
+        onClick={playMode ? endPlay : startPlay}
+        disabled={atEnd || loading}
+      >
         {playMode ? <Pause /> : <Play />}
       </button>
-      <button onClick={handleNext} disabled={atEnd || playMode}>
+      <button onClick={handleNext} disabled={atEnd || playMode || loading}>
         <Next />
       </button>
-      <button onClick={handleEnd} disabled={atEnd || playMode}>
+      <button onClick={handleEnd} disabled={atEnd || playMode || loading}>
         <End />
       </button>
     </div>

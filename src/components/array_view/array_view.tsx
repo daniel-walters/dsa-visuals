@@ -16,6 +16,7 @@ import CodeBlock from "../code_block/code_block";
 
 import styles from "./array_view.module.scss";
 import Text from "../text/text";
+import LoadingArrayView from "./array_view.loading";
 
 const DEFAULT_ARRAY_SIZE = 7;
 
@@ -25,18 +26,20 @@ export default function ArrayView() {
   const { index, iterations, step } = state;
 
   useEffect(() => {
-    const initialArray = getRandomArray(DEFAULT_ARRAY_SIZE);
-    const transformedArray = transformArray(initialArray);
+    setTimeout(() => {
+      const initialArray = getRandomArray(DEFAULT_ARRAY_SIZE);
+      const transformedArray = transformArray(initialArray);
 
-    dispatch({
-      type: "SET_ITERATIONS",
-      iterations: getIterations(bubbleSort, transformedArray),
-    });
+      dispatch({
+        type: "SET_ITERATIONS",
+        iterations: getIterations(bubbleSort, transformedArray),
+      });
+    }, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!iterations) {
-    // TODO: Replace with a Loading state
-    return null;
+    return <LoadingArrayView codeMap={codeMap} />;
   }
 
   const {
