@@ -19,7 +19,7 @@ const getIterations: GetIterationsFn = function (generatorFn, initial) {
     comparedIndicies: null,
     commentary:
       "Bubble sort checks each element with the next. Swapping them if the latter is smaller.",
-    lineNums: [2],
+    step: "start",
   });
 
   while (!done) {

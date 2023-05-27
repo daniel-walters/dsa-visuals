@@ -3,13 +3,13 @@ export type BubbleSortArrayElement = {
   value: number;
 };
 
+export type BubbleSortSteps = "start" | "compare" | "swap" | "noSwap" | "end";
+
 export type BubbleSortIteration = {
   array: BubbleSortArray;
   comparedIndicies: number[] | null;
   commentary: string;
-  outerLoop?: number;
-  innerLoop?: number;
-  lineNums?: number[];
+  step?: BubbleSortSteps;
 };
 
 export type BubbleSortArray = BubbleSortArrayElement[];
@@ -20,8 +20,8 @@ export type BubbleSortFn = (
 
 const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
   let comparedIndicies: number[] = [];
-  let lineNums: number[] = [];
   let commentary = "";
+  let step: BubbleSortSteps;
 
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length - 1 - i; j++) {
@@ -32,21 +32,19 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
       yield {
         array,
         comparedIndicies,
-        innerLoop: j,
-        outerLoop: i,
         commentary: `Compare ${array[j].value} with ${array[j + 1].value}`,
-        lineNums: [4],
+        step: "compare",
       };
       if (array[j + 1].value < array[j].value) {
         commentary = `${array[j + 1].value} is less than ${
           array[j].value
         }, so they swap places.`;
-        lineNums = [5, 6, 7];
+        step = "swap";
         const temp = array[j];
         array[j] = array[j + 1];
         array[j + 1] = temp;
       } else {
-        lineNums = [8];
+        step = "noSwap";
       }
 
       if (j === array.length - i - 2) {
@@ -58,9 +56,7 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
         array,
         comparedIndicies,
         commentary,
-        innerLoop: j,
-        outerLoop: i,
-        lineNums,
+        step,
       };
       comparedIndicies = [];
     }
@@ -70,7 +66,7 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
     array,
     comparedIndicies: null,
     commentary: "Algorithm finished.",
-    lineNums: [11],
+    step: "end",
   };
 };
 

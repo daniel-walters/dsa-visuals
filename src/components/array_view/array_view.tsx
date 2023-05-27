@@ -3,7 +3,7 @@
 import React, { useEffect, useReducer } from "react";
 
 import bubbleSort from "@/algorithms/bubble_sort/bubble_sort";
-import codeMap from "@/algorithms/bubble_sort/code";
+import codeMap, { stepMap } from "@/algorithms/bubble_sort/code";
 import getIterations from "@/algorithms/utils/get_iterations";
 import getRandomArray from "@/utils/get_random_array";
 import transformArray from "@/utils/transform_array";
@@ -46,9 +46,7 @@ export default function ArrayView() {
     array,
     comparedIndicies,
     commentary,
-    innerLoop,
-    outerLoop,
-    lineNums,
+    step: fnStep,
   } = iterations[index];
 
   return (
@@ -59,20 +57,19 @@ export default function ArrayView() {
           <div className={styles["array-view--control"]}>
             <AlgorithmControls />
           </div>
-          <Text size={18} semiBold inline>
-            {step} / {iterations.length}:{" "}
-          </Text>
-          <Text size={18} inline>
-            {commentary}
-          </Text>
+          <div className={styles["array-view--commentary"]}>
+            <Text size={18} semiBold inline>
+              {step} / {iterations.length}:{" "}
+            </Text>
+            <Text size={18} inline>
+              {commentary}
+            </Text>
+          </div>
           <CodeBlock
             codeMap={codeMap}
-            highlight={lineNums}
+            stepMap={stepMap}
             lineNumbers
-            variables={[
-              ["i", outerLoop],
-              ["j", innerLoop],
-            ]}
+            step={fnStep}
           />
         </div>
       </ArrayDispatchContext.Provider>

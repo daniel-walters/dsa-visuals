@@ -3,17 +3,17 @@ import React, { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 import styles from "./code_block.module.scss";
-import Text from "../text/text";
 import capitalise from "@/utils/capitalise";
 import CopyIcon from "../../../public/copy.svg";
 import classNames from "classnames";
+import { BubbleSortSteps } from "@/algorithms/bubble_sort/bubble_sort";
 
 interface CodeBlockProps {
   codeMap: Record<string, string>;
-  highlight?: number | number[];
+  stepMap: Record<string, Record<string, number[]>>;
+  step?: BubbleSortSteps;
   defaultLanguage?: string;
   lineNumbers?: boolean;
-  variables?: [string, number | undefined][];
   loading?: boolean;
 }
 
@@ -35,20 +35,18 @@ function getLineHighlight(
 
 export default function CodeBlock({
   codeMap,
-  highlight,
+  stepMap,
   defaultLanguage = "javascript",
   lineNumbers,
   loading,
-  variables,
+  step,
 }: CodeBlockProps) {
   const availableLanguages = Object.keys(codeMap);
 
   const [language, setLanguage] = useState(defaultLanguage);
   const [code, setCode] = useState(codeMap[defaultLanguage]);
 
-  const highlightLines = Array.isArray(highlight)
-    ? [...highlight]
-    : [highlight];
+  const highlightLines = step ? stepMap[language][step] : [];
 
   return (
     <div
@@ -83,18 +81,6 @@ export default function CodeBlock({
       >
         {code}
       </SyntaxHighlighter>
-      {variables && (
-        <div className={styles["code-block--vars"]}>
-          {variables.map(
-            ([variable, value]) =>
-              value !== undefined && (
-                <Text key={variable} size={16} semiBold>
-                  {variable}: {value}
-                </Text>
-              )
-          )}
-        </div>
-      )}
     </div>
   );
 }
