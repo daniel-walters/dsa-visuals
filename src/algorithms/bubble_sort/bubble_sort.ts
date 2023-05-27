@@ -10,6 +10,7 @@ export type BubbleSortIteration = {
   comparedIndicies: number[] | null;
   commentary: string;
   step?: BubbleSortSteps;
+  numSorted: number;
 };
 
 export type BubbleSortArray = BubbleSortArrayElement[];
@@ -22,6 +23,7 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
   let comparedIndicies: number[] = [];
   let commentary = "";
   let step: BubbleSortSteps;
+  let numSorted = 0;
 
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length - 1 - i; j++) {
@@ -34,6 +36,7 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
         comparedIndicies,
         commentary: `Compare ${array[j].value} with ${array[j + 1].value}`,
         step: "compare",
+        numSorted,
       };
       if (array[j + 1].value < array[j].value) {
         commentary = `${array[j + 1].value} is less than ${
@@ -50,6 +53,7 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
       if (j === array.length - i - 2) {
         commentary =
           commentary + ` ${array[array.length - 1 - i].value} is now sorted.`;
+        numSorted++;
       }
 
       yield {
@@ -57,6 +61,7 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
         comparedIndicies,
         commentary,
         step,
+        numSorted,
       };
       comparedIndicies = [];
     }
@@ -67,6 +72,7 @@ const bubble_sort: BubbleSortFn = function* bubble_sort(array) {
     comparedIndicies: null,
     commentary: "Algorithm finished.",
     step: "end",
+    numSorted: array.length,
   };
 };
 

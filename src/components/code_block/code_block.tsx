@@ -22,12 +22,14 @@ function getLineHighlight(
   linesToHighlight: (number | undefined)[]
 ): React.HTMLProps<HTMLElement> {
   const style: React.HTMLProps<HTMLElement>["style"] = {
-    width: "100%",
     display: "block",
+    width: "calc(100% + 16px)",
+    position: "relative",
+    right: "8px",
   };
 
   if (linesToHighlight.includes(lineNumber)) {
-    style.backgroundColor = "rgba(0, 200, 83, 0.5)";
+    style.backgroundColor = "#0780804d";
   }
 
   return { style };
@@ -77,6 +79,7 @@ export default function CodeBlock({
         language={language}
         lineProps={(lineNum) => getLineHighlight(lineNum, highlightLines)}
         showLineNumbers={lineNumbers}
+        customStyle={{ backgroundColor: "#fffffe", padding: "8px" }}
         wrapLines
       >
         {code}

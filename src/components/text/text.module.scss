@@ -1,7 +1,7 @@
 @import "src/app/variables";
 
 .text {
-  color: #333333;
+  color: $text;
 
   &__semiBold {
     font-weight: $semiBold;

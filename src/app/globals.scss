@@ -1,8 +1,10 @@
+@import "src/app/variables";
+
 * {
   margin: 0;
   padding: 0;
 }
 
 html {
-  background-color: #f8f8f8;
+  background-color: $background;
 }

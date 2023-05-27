@@ -12,32 +12,16 @@
   width: 80vw;
 
   &--border {
-    height: 20px;
+    height: 5px;
     width: 100%;
-    background-color: blue;
+    background-color: $stroke;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     margin-bottom: $md;
-
-    &__loading {
-      background-color: lightblue;
-      background: linear-gradient(
-        to right,
-        blue 0%,
-        blue 10%,
-        lightblue 10%,
-        lightblue 100%
-      );
-      background-size: 200% 200%;
-      animation-name: arrayBorderLoading;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-    }
   }
 
   &__loading {
     > div {
-      background-color: lightgray;
       animation-name: arrayItemLoading;
       animation-duration: 0.5s;
       animation-direction: alternate;
@@ -58,10 +42,10 @@
 
 @keyframes arrayItemLoading {
   from {
-    background-color: lightgray;
+    background-color: $card;
   }
   to {
-    background-color: gray;
+    background-color: $loading;
   }
 }
 

@@ -47,13 +47,18 @@ export default function ArrayView() {
     comparedIndicies,
     commentary,
     step: fnStep,
+    numSorted,
   } = iterations[index];
 
   return (
     <ArrayContext.Provider value={state}>
       <ArrayDispatchContext.Provider value={dispatch}>
         <div className={styles["array-view"]}>
-          <Array array={array} comparedIndicies={comparedIndicies} />
+          <Array
+            array={array}
+            comparedIndicies={comparedIndicies}
+            numSorted={numSorted}
+          />
           <div className={styles["array-view--control"]}>
             <AlgorithmControls />
           </div>

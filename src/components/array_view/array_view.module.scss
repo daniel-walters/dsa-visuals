@@ -16,30 +16,21 @@
     gap: 1em;
 
     &__loading {
-      height: 1em;
       width: 100%;
-      background-color: gray;
-      border-radius: 1em;
-      background: linear-gradient(
-        to right,
-        lightgray 0%,
-        lightgray 10%,
-        gray 10%,
-        gray 100%
-      );
-      background-size: 200% 200%;
-      animation-name: loading;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-    }
-  }
-}
+      display: flex;
+      gap: $md;
+      p {
+        height: 1em;
+        background-color: $loading;
+        border-radius: 1em;
 
-@keyframes loading {
-  from {
-    background-position: 0% 100%;
-  }
-  to {
-    background-position: -100% 100%;
+        &:first-child {
+          width: 10%;
+        }
+        &:last-child {
+          width: 90%;
+        }
+      }
+    }
   }
 }

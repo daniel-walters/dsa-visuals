@@ -1,4 +1,4 @@
-const MIN_HEIGHT = `16px`;
+const MIN_HEIGHT = `32px`;
 
 export function getHeight(arrayValue: number, maxArrayValue?: number) {
   const percentage = (arrayValue / (maxArrayValue || arrayValue)) * 100;

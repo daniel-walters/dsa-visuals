@@ -16,8 +16,11 @@ export default function LoadingArrayView({ codeMap }: LoadingArrayViewProps) {
       <div className={styles["array-view--control"]}>
         <AlgorithmControls />
       </div>
-      <p className={styles["array-view--commentary__loading"]} />
-      <CodeBlock codeMap={codeMap} lineNumbers loading />
+      <div className={styles["array-view--commentary__loading"]}>
+        <p />
+        <p />
+      </div>
+      <CodeBlock codeMap={codeMap} stepMap={{}} lineNumbers loading />
     </div>
   );
 }

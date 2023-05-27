@@ -7,6 +7,11 @@
   position: relative;
   width: fit-content;
 
+  pre {
+    border: 1px solid black;
+    border-top: none;
+  }
+
   span {
     font-size: $textLg;
   }
@@ -19,18 +24,6 @@
     }
 
     .code-block--header {
-      background-color: lightblue;
-      background: linear-gradient(
-        to right,
-        blue 0%,
-        blue 10%,
-        lightblue 10%,
-        lightblue 100%
-      );
-      background-size: 200% 200%;
-      animation-name: loading;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
       select,
       svg {
         visibility: hidden;
@@ -41,8 +34,12 @@
   &--header {
     display: flex;
     justify-content: space-between;
-    background-color: aqua;
-    padding: 12px;
+    background-color: $secondary;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: $sm $md;
+    border: 1px solid black;
+    border-bottom: none;
 
     button {
       background: none;
@@ -52,7 +49,7 @@
         cursor: pointer;
 
         svg {
-          fill: white;
+          fill: $textAlt;
         }
       }
     }
@@ -61,15 +58,7 @@
       height: 24px;
       width: 24px;
       transition: 0.1s;
+      fill: $stroke;
     }
-  }
-}
-
-@keyframes loading {
-  from {
-    background-position: 0% 100%;
-  }
-  to {
-    background-position: -100% 100%;
   }
 }
