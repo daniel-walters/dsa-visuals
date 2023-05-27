@@ -1,16 +1,18 @@
+@import "src/app/variables";
+
 .heading {
   color: #222222;
   text-align: center;
 
   &__32 {
-    font-size: 32px;
+    font-size: $headingSm;
   }
 
   &__48 {
-    font-size: 48px;
+    font-size: $headingMd;
   }
 
   &__64 {
-    font-size: 64px;
+    font-size: $headingLg;
   }
 }

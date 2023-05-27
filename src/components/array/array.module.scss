@@ -1,12 +1,14 @@
+@import "src/app/variables";
+
 .array {
   align-items: center;
   display: flex;
   height: 250px;
-  gap: 8px;
+  gap: $xs;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: 16px;
-  margin-top: 24px;
+  margin-bottom: $md;
+  margin-top: $lg;
   width: 80vw;
 
   &--border {
@@ -15,7 +17,7 @@
     background-color: blue;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    margin-bottom: 16px;
+    margin-bottom: $md;
 
     &__loading {
       background-color: lightblue;

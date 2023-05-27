@@ -1,16 +1,14 @@
+@import "src/app/variables";
+
 .code-block {
-  margin-top: 16px;
+  margin-top: $md;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   width: fit-content;
 
   span {
-    font-size: 18px;
-  }
-
-  &--vars {
-    p {
-      margin-bottom: 4px;
-    }
+    font-size: $textLg;
   }
 
   &__loading {

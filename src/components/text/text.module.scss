@@ -1,19 +1,21 @@
+@import "src/app/variables";
+
 .text {
   color: #333333;
 
   &__semiBold {
-    font-weight: 500;
+    font-weight: $semiBold;
   }
 
   &__14 {
-    font-size: 14px;
+    font-size: $textSm;
   }
 
   &__16 {
-    font-size: 16px;
+    font-size: $textMd;
   }
 
   &__18 {
-    font-size: 18px;
+    font-size: $textLg;
   }
 }

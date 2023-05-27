@@ -1,5 +1,7 @@
+@import "src/app/variables";
+
 .array-item {
-  border: 1px solid gray;
+  border: 1px solid black;
   display: flex;
   width: 64px;
   min-height: 1em;
@@ -8,6 +10,6 @@
     width: 100%;
     align-self: flex-end;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: $xs;
   }
 }

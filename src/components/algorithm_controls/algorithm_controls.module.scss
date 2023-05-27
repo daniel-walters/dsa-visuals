@@ -1,10 +1,12 @@
+@import "src/app/variables";
+
 .algorithm-controls {
   display: flex;
   align-items: flex-end;
 
   button {
     background: none;
-    margin-left: 8px;
+    margin-left: $xs;
     border-radius: 8px;
     border: 1px solid black;
     display: flex;
