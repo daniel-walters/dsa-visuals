@@ -24,7 +24,7 @@
     }
 
     .code-block--header {
-      select,
+      &--select,
       svg {
         visibility: hidden;
       }
@@ -59,6 +59,23 @@
       width: 24px;
       transition: 0.1s;
       fill: $stroke;
+    }
+  }
+}
+
+.language-picker {
+  display: flex;
+  gap: $sm;
+
+  &--option {
+    cursor: default;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__selected {
+      border-bottom: 2px solid black;
     }
   }
 }

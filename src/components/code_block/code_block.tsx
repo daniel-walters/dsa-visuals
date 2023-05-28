@@ -7,6 +7,7 @@ import capitalise from "@/utils/capitalise";
 import CopyIcon from "../../../public/copy.svg";
 import classNames from "classnames";
 import { BubbleSortSteps } from "@/algorithms/bubble_sort/bubble_sort";
+import Text from "../text/text";
 
 interface CodeBlockProps {
   codeMap: Record<string, string>;
@@ -35,6 +36,37 @@ function getLineHighlight(
   return { style };
 }
 
+interface LanguagePickerProps {
+  languages: string[];
+  currentLanguage: string;
+  onChange: (language: string) => void;
+}
+
+function LanguagePicker({
+  languages,
+  currentLanguage,
+  onChange,
+}: LanguagePickerProps) {
+  return (
+    <div className={styles["language-picker"]}>
+      {languages.map((language) => (
+        <Text
+          className={classNames(
+            styles["language-picker--option"],
+            currentLanguage === language &&
+              styles[`language-picker--option__selected`]
+          )}
+          size={18}
+          key={language}
+          onClick={() => onChange(language)}
+        >
+          {capitalise(language)}
+        </Text>
+      ))}
+    </div>
+  );
+}
+
 export default function CodeBlock({
   codeMap,
   stepMap,
@@ -58,19 +90,14 @@ export default function CodeBlock({
       )}
     >
       <div className={styles["code-block--header"]}>
-        <select
-          value={language}
-          onChange={(e) => {
-            setLanguage(e.target.value);
-            setCode(codeMap[e.target.value]);
+        <LanguagePicker
+          languages={availableLanguages}
+          currentLanguage={language}
+          onChange={(language: string) => {
+            setLanguage(language);
+            setCode(codeMap[language]);
           }}
-        >
-          {availableLanguages.map((lang) => (
-            <option key={lang} value={lang}>
-              {capitalise(lang)}
-            </option>
-          ))}
-        </select>
+        />
         <button onClick={() => navigator.clipboard.writeText(code)}>
           <CopyIcon />
         </button>

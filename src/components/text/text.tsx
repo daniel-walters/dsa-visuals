@@ -12,6 +12,7 @@ interface TextProps {
   inline?: boolean;
   semiBold?: boolean;
   size?: TextSizes;
+  onClick: () => void;
 }
 const DEFAULT_SIZE: TextSizes = 14;
 
@@ -19,6 +20,7 @@ export default function Text({
   children,
   className,
   inline,
+  onClick,
   semiBold,
   size,
 }: PropsWithClassName<PropsWithChildren<TextProps>>) {
@@ -34,6 +36,7 @@ export default function Text({
         semiBold && styles["text__semiBold"],
         className && className
       )}
+      onClick={onClick}
     >
       {children}
     </TextComponent>
