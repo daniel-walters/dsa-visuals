@@ -8,7 +8,7 @@ import styles from "./page.module.scss";
 export default function Home() {
   return (
     <div className={styles["bubble-sort"]}>
-      <Heading size={48}>Bubble Sort</Heading>
+      <Heading size={64}>Bubble Sort</Heading>
       <ArrayView />
     </div>
   );

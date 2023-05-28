@@ -1,4 +1,5 @@
 @import "src/app/variables";
+@import "src/app/mixins";
 
 .heading {
   color: $heading;
@@ -14,5 +15,13 @@
 
   &__64 {
     font-size: $headingLg;
+
+    @include devices(tablet) {
+      font-size: $headingMd;
+    }
+
+    @include devices(mobile) {
+      font-size: $headingSm;
+    }
   }
 }

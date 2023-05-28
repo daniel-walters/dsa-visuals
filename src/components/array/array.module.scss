@@ -1,15 +1,15 @@
 @import "src/app/variables";
+@import "src/app/mixins";
 
 .array {
   align-items: center;
   display: flex;
-  height: 250px;
-  gap: $xs;
+  height: 175px;
+  gap: $lg;
   justify-content: center;
   align-items: flex-end;
   margin-bottom: $md;
-  margin-top: $lg;
-  width: 80vw;
+  width: 100%;
 
   &--border {
     height: 5px;
@@ -37,6 +37,14 @@
         display: none;
       }
     }
+  }
+
+  @include devices(tablet) {
+    gap: $md;
+  }
+
+  @include devices(mobile) {
+    gap: $xs;
   }
 }
 

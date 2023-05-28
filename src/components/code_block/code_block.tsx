@@ -8,6 +8,7 @@ import CopyIcon from "../../../public/copy.svg";
 import classNames from "classnames";
 import { BubbleSortSteps } from "@/algorithms/bubble_sort/bubble_sort";
 import Text from "../text/text";
+import { motion } from "framer-motion";
 
 interface CodeBlockProps {
   codeMap: Record<string, string>;
@@ -50,18 +51,17 @@ function LanguagePicker({
   return (
     <div className={styles["language-picker"]}>
       {languages.map((language) => (
-        <Text
-          className={classNames(
-            styles["language-picker--option"],
-            currentLanguage === language &&
-              styles[`language-picker--option__selected`]
+        <div key={language} className={styles["language-picker--option"]}>
+          <Text size={18} key={language} onClick={() => onChange(language)}>
+            {capitalise(language)}
+          </Text>
+          {currentLanguage === language && (
+            <motion.div
+              className={styles["language-picker--option__selected"]}
+              layoutId="underline"
+            />
           )}
-          size={18}
-          key={language}
-          onClick={() => onChange(language)}
-        >
-          {capitalise(language)}
-        </Text>
+        </div>
       ))}
     </div>
   );
@@ -83,11 +83,12 @@ export default function CodeBlock({
   const highlightLines = step ? stepMap[language][step] : [];
 
   return (
-    <div
+    <motion.div
       className={classNames(
         styles["code-block"],
         loading && styles["code-block__loading"]
       )}
+      layout
     >
       <div className={styles["code-block--header"]}>
         <LanguagePicker
@@ -108,9 +109,10 @@ export default function CodeBlock({
         showLineNumbers={lineNumbers}
         customStyle={{ backgroundColor: "#fffffe", padding: "8px" }}
         wrapLines
+        wrapLongLines
       >
         {code}
       </SyntaxHighlighter>
-    </div>
+    </motion.div>
   );
 }

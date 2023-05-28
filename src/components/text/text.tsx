@@ -12,7 +12,7 @@ interface TextProps {
   inline?: boolean;
   semiBold?: boolean;
   size?: TextSizes;
-  onClick: () => void;
+  onClick?: () => void;
 }
 const DEFAULT_SIZE: TextSizes = 14;
 

@@ -1,8 +1,18 @@
 @import "src/app/variables";
+@import "src/app/mixins";
 
 .bubble-sort {
+  padding: $lg $xxl;
+
   > h1 {
-    margin-top: $lg;
-    margin-bottom: $xxl;
+    margin-bottom: calc($xxl + $xl);
+  }
+
+  @include devices(tablet) {
+    padding: $lg;
+  }
+
+  @include devices(mobile) {
+    padding: $md;
   }
 }
