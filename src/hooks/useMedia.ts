@@ -10,6 +10,8 @@ export default function useMedia(width: string) {
       setMatches(e.matches);
     }
 
+    setMatches(window.matchMedia(query).matches);
+
     window.matchMedia(query).addEventListener("change", handleMedia);
 
     return () =>
