@@ -75,7 +75,7 @@
     width: 100%;
 
     span {
-      font-size: $textSm;
+      font-size: $textXs;
     }
   }
 }
@@ -88,6 +88,10 @@
     cursor: default;
     p {
       margin-bottom: $xxs;
+
+      @include devices(mobile) {
+        font-size: $textSm;
+      }
     }
 
     &:hover {

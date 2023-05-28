@@ -13,6 +13,6 @@
   }
 
   @include devices(mobile) {
-    padding: $md;
+    padding: $md $xs;
   }
 }

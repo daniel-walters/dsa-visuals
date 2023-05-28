@@ -106,6 +106,10 @@ export default function CodeBlock({
       <SyntaxHighlighter
         language={language}
         lineProps={(lineNum) => getLineHighlight(lineNum, highlightLines)}
+        lineNumberStyle={{
+          minWidth: 0,
+          marginLeft: "4px",
+        }}
         showLineNumbers={lineNumbers}
         customStyle={{ backgroundColor: "#fffffe", padding: "8px" }}
         wrapLines
