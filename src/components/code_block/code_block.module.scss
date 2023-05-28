@@ -75,6 +75,14 @@
     width: 100%;
 
     span {
+      font-size: $textSm;
+    }
+  }
+
+  @include devices(mobileSmall) {
+    width: 100%;
+
+    span {
       font-size: $textXs;
     }
   }

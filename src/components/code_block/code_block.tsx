@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
 
+import useMedia from "@/hooks/useMedia";
 import styles from "./code_block.module.scss";
 import capitalise from "@/utils/capitalise";
 import CopyIcon from "../../../public/copy.svg";
@@ -75,6 +76,7 @@ export default function CodeBlock({
   loading,
   step,
 }: CodeBlockProps) {
+  const isMobileSmall = useMedia("450");
   const availableLanguages = Object.keys(codeMap);
 
   const [language, setLanguage] = useState(defaultLanguage);
@@ -110,7 +112,7 @@ export default function CodeBlock({
           minWidth: 0,
           marginLeft: "4px",
         }}
-        showLineNumbers={lineNumbers}
+        showLineNumbers={lineNumbers && !isMobileSmall}
         customStyle={{ backgroundColor: "#fffffe", padding: "8px" }}
         wrapLines
         wrapLongLines
