@@ -78,6 +78,14 @@
       font-size: $textSm;
     }
   }
+
+  @include devices(mobileSmall) {
+    width: 100%;
+
+    span {
+      font-size: $textXs;
+    }
+  }
 }
 
 .language-picker {
@@ -88,6 +96,10 @@
     cursor: default;
     p {
       margin-bottom: $xxs;
+
+      @include devices(mobile) {
+        font-size: $textSm;
+      }
     }
 
     &:hover {
