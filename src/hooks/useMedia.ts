@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function useMedia(width: string) {
   const query = `(max-width: ${width}px)`;
 
-  const [matches, setMatches] = useState(window.matchMedia(query).matches);
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
     function handleMedia(e: MediaQueryListEvent) {
